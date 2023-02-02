@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        figure.zoom {
+            background-position: 50% 50%;
+            position: relative;
+            width: 500px;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        figure.zoom img:hover {
+            opacity: 0;
+        }
+
+        figure.zoom img {
+            transition: opacity 0.5s;
+            display: block;
+            width: 100%;
+        }
+    </style>
+    <script>
+        const zoom = (e) => {
+            let zooming = e.currentTarget;
+            e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+            e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
+            x = offsetX/zooming.offsetWidth*100
+            y = offsetY/zooming.offsetHeight*100
+            zooming.style.backgroundPosition = x + '% ' + y + '%';
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>Image Zoom</h1>
+
+    <p>Mouse over the image:</p>
+
+    <figure class="zoom" onmousemove="zoom(event)"
+        style="background-image: url(https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80)">
+        <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" />
+    </figure>
+    <figure class="zoom" onmousemove="zoom(event)"
+        style="background-image: url(https://images.unsplash.com/photo-1576087503901-b2a3e3b66672?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)">
+        <img src="https://images.unsplash.com/photo-1576087503901-b2a3e3b66672?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />
+    </figure>
+
+</body>
+
+</html>
